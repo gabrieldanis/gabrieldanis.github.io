@@ -13,18 +13,44 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
     </head>
     <body>
         <div
-            class="relative gap-y-12 gap-x-24 grid min-h-screen grid-rows-[auto_1fr_auto] grid-cols[1fr] lg:grid-rows-[1fr_auto] lg:grid-cols-[auto_1fr] bg-linear-to-br from-emerald-900/15 to-neutral-900 p-6 sm:p-12"
+            class="relative gap-y-12 gap-x-24 grid min-h-screen grid-rows-[1fr_auto] grid-cols[1fr] lg:grid-rows-[1fr_auto] lg:grid-cols-[auto_1fr] bg-linear-to-br from-emerald-900/15 to-neutral-900 p-6 sm:p-12"
         >
-            <div
-                class="flex lg:flex-col justify-between lg:justify-start items-end lg:items-start"
+            <nav
+                id="site-nav"
+                class="drop-shadow-xl lg:drop-shadow-none transition-transform lg:transition-none duration-300 ease-out will-change-transform fixed lg:static inset-x-0 z-50 px-6 pt-6 lg:p-0 sm:px-12 backdrop-blur-lg lg:backdrop-blur-none bg-neutral-950/0 flex lg:flex-col justify-between lg:justify-start items-end lg:items-start"
             >
                 <Header />
                 <Navigation />
-            </div>
-            <main class="lg:pt-28 pt-8 lg:max-w-3xl">
+            </nav>
+            <main class="lg:pt-28 pt-28 lg:max-w-3xl">
                 <slot />
             </main>
             <Footer />
         </div>
+        <script>
+            let lastScrollY = window.scrollY;
+            const nav = document.getElementById("site-nav");
+            console.log("nav:", nav);
+            function onScroll() {
+                console.log("scrolling yo");
+                if (nav) {
+                    console.log("nav oida");
+                    const navHeight = nav.offsetHeight;
+                    const currentScrollY = window.scrollY;
+
+                    if (currentScrollY <= navHeight) {
+                        nav.style.transform = "translateY(0)";
+                    } else if (currentScrollY > lastScrollY) {
+                        nav.style.transform = "translateY(-100%)";
+                    } else {
+                        nav.style.transform = "translateY(0)";
+                    }
+
+                    lastScrollY = currentScrollY;
+                }
+            }
+
+            window.addEventListener("scroll", onScroll, { passive: true });
+        </script>
     </body>
 </html>
