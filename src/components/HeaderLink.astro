@@ -15,11 +15,11 @@ const isActive = href === pathname || href === "/" + (subpath?.[0] || "");
         className,
         { active: isActive },
         isActive
-            ? "lg:border-s-emerald-600! border-b-emerald-600! text-neutral-100!"
-            : "lg:border-s-neutral-600 border-b-neutral-600!",
+            ? "lg:border-s-emerald-600! border-b-transparent! text-neutral-100!"
+            : "lg:border-s-neutral-600 border-b-transparent!",
     ]}
     {...props}
-    class="pb-4 lg:ps-4 px-2 lg:py-2 lg:border-s lg:border-b-0 border-b hover:text-neutral-100 text-neutral-400 text-sm"
+    class="lg:ps-4 px-2 lg:py-2 lg:border-s lg:border-b-0 border-b hover:text-neutral-100 text-neutral-400 text-sm"
 >
     <slot />
 </a>
