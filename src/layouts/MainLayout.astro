@@ -13,7 +13,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
     </head>
     <body>
         <div
-            class="relative gap-y-12 gap-x-24 grid min-h-dvh grid-rows-[1fr_auto] grid-cols[1fr] lg:grid-rows-[1fr_auto] lg:grid-cols-[auto_1fr] bg-linear-to-br from-emerald-900/15 to-neutral-900 p-6 sm:p-12"
+            class="relative gap-y-12 gap-x-24 grid min-h-dvh grid-rows-[1fr_auto] grid-cols[1fr] lg:grid-rows-[1fr_auto] lg:grid-cols-[auto_1fr] bg-linear-to-br from-emerald-900/20 to-neutral-900 p-6 sm:p-12"
         >
             <nav
                 id="site-nav"
@@ -30,11 +30,8 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
         <script>
             let lastScrollY = window.scrollY;
             const nav = document.getElementById("site-nav");
-            console.log("nav:", nav);
             function onScroll() {
-                console.log("scrolling yo");
                 if (nav) {
-                    console.log("nav oida");
                     const navHeight = nav.offsetHeight;
                     const currentScrollY = window.scrollY;
 
